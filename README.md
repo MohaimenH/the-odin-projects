@@ -4,4 +4,6 @@ This repo has my submissions for the projects I have done in Full Stack JavaScri
 
 ## Projects finished:
 
+### Foundations
 
+- Google Search page
