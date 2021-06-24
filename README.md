@@ -7,3 +7,4 @@ This repo has my submissions for the projects I have done in Full Stack JavaScri
 ### Foundations
 
 - Google Search page
+- Rock, Paper, Scissors
