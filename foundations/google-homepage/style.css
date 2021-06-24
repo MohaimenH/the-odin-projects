@@ -23,6 +23,7 @@ ul {
 
 li {
     margin: 0px 15px;
+    cursor: pointer;
 }
 
 .header-ul {
@@ -81,8 +82,11 @@ input {
     height: 45px;
     border-radius: 30px;
     border: 1px solid #e9eaed;
-    padding-left: 40px;
-    font-size: 15px;
+    padding-left: 50px;
+    font-size: 18px;
+    background-image: url(./search.png);
+    background-repeat: no-repeat;
+    background-position: 12px;
 }
 
 button {
