@@ -27,3 +27,28 @@ para2.textContent = "ME TOO!";
 blackDiv.appendChild(para2);
 
 container.appendChild(blackDiv);
+
+const btn = document.querySelector('#btn');
+btn.onclick = () => {
+    alert("Hello World!");
+};
+
+const btn2 = document.querySelector('#btn2');
+
+btn2.addEventListener('click', (event) => {
+    alert("Yello World!");
+    event.stopPropagation();
+});
+
+const btns = document.querySelector('.btns');
+btns.addEventListener('click', (event) => {
+    event.target.style.color = 'red';
+});
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        e.target.style.backgroundColor='blue';
+    });
+});
