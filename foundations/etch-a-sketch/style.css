@@ -1,0 +1,20 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+.container {
+    margin: 0;
+    display: flex;
+    flex-flow: row wrap;
+    /* justify-content: center; */
+    width: 720px;
+    height: 720px;
+}
+
+.square {
+    margin: 0;
+    background-color: black;
+}
