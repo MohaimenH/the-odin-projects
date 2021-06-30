@@ -1,31 +1,107 @@
 let myLibrary = [];
 
-function Book (title, author, pages, read) {
+// Book creation
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
 
-    this.hasBeenRead = () => {
+Book.prototype = {
+    hasBeenRead: function () {
         if (this.read) {
             return "has been read";
         }
 
         return "not read yet";
-    }
+    },
 
-    this.info = () => {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasBeenRead()}.`;
-    }
-}
+    info: function () {
+        return `${this.title} by ${this.author}, ${
+            this.pages
+        } pages, ${this.hasBeenRead()}.`;
+    },
+};
 
-function addBookToLibrary(book) {
+// Library related methods
+
+function addBookToLibrary(title, author, pages, read) {
+    let book = new Book(title, author, pages, read);
     myLibrary.push(book);
 }
 
-function updateDisplay() {
-    // Update
+// DOM Manipulation
+
+function removeAllChildNodes(parent) {
+    // INEFFICIENT
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
 
-// let theHobbit = new Book("The Hobbit", "J.R.R. Tolien", 295, false);
-// console.log(theHobbit.info());
+const bookList = document.querySelector(".book-list");
+
+function updateDisplay() {
+    removeAllChildNodes(bookList); //INEFFICIENT!!
+    myLibrary.forEach((book) => {
+        if (book != -1) {
+            let li = document.createElement("li");
+            li.classList.add("list-wrapper");
+
+            for (let prop in book) {
+                if (prop == "read") {
+                    let button = document.createElement("button");
+                    button.textContent = book[prop] ? "Read" : "Not Read";
+                    button.setAttribute("data-index", myLibrary.indexOf(book));
+
+                    button.addEventListener("click", readEntry);
+                    li.appendChild(button);
+                } else if (book.hasOwnProperty(prop)) {
+                    let div = document.createElement("div");
+                    div.textContent = book[prop];
+                    li.appendChild(div);
+                }
+            }
+
+            let deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.setAttribute("data-index", myLibrary.indexOf(book));
+            deleteBtn.addEventListener("click", deleteEntry);
+
+            li.appendChild(deleteBtn);
+            bookList.appendChild(li);
+        }
+    });
+}
+
+const submitButton = document.querySelector(".submit");
+
+const bookName = document.querySelector(".book-name");
+const bookAuthor = document.querySelector(".book-author");
+const bookPages = document.querySelector(".book-pages");
+const read = document.querySelector(".read");
+
+submitButton.addEventListener("click", () => {
+    addBookToLibrary(
+        bookName.value,
+        bookAuthor.value,
+        bookPages.value,
+        read.checked
+    );
+    updateDisplay();
+});
+
+const deleteEntry = (e) => {
+    let i = e.target.getAttribute("data-index");
+    myLibrary[i] = -1; //Hacky fix -- Infficient;
+
+    bookList.removeChild(e.target.parentNode);
+};
+
+const readEntry = (e) => {
+    let i = e.target.getAttribute("data-index");
+    myLibrary[i].read = !myLibrary[i].read;
+
+    e.target.textContent = myLibrary[i].read ? "Read" : "Not Read";
+};
