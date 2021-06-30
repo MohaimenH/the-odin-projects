@@ -14,3 +14,5 @@ A list of finished projects, grouped by the course they belong to, can be found 
 - Calculator
 
 ### JavaScript
+
+- Library
