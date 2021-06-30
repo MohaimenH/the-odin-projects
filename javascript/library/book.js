@@ -52,7 +52,15 @@ function updateDisplay() {
             for (let prop in book) {
                 if (prop == "read") {
                     let button = document.createElement("button");
+
                     button.textContent = book[prop] ? "Read" : "Not Read";
+
+                    if (book[prop]) {
+                        button.classList.add("book-read");
+                    } else {
+                        button.classList.add("book-unread");
+                    }
+
                     button.setAttribute("data-index", myLibrary.indexOf(book));
 
                     button.addEventListener("click", readEntry);
@@ -66,6 +74,7 @@ function updateDisplay() {
 
             let deleteBtn = document.createElement("button");
             deleteBtn.textContent = "Delete";
+            deleteBtn.classList.add("deleteBtn");
             deleteBtn.setAttribute("data-index", myLibrary.indexOf(book));
             deleteBtn.addEventListener("click", deleteEntry);
 
@@ -82,7 +91,9 @@ const bookAuthor = document.querySelector(".book-author");
 const bookPages = document.querySelector(".book-pages");
 const read = document.querySelector(".read");
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    
     addBookToLibrary(
         bookName.value,
         bookAuthor.value,
@@ -102,6 +113,13 @@ const deleteEntry = (e) => {
 const readEntry = (e) => {
     let i = e.target.getAttribute("data-index");
     myLibrary[i].read = !myLibrary[i].read;
-
     e.target.textContent = myLibrary[i].read ? "Read" : "Not Read";
+
+    updateDisplay();
 };
+
+addBookToLibrary("Game of Thrones", "Martin", 300, true);
+addBookToLibrary("Lord of The Rings", "Tolkien", 200, false);
+addBookToLibrary("Sherlock Holmes", "Conan Doyle", 500, true);
+
+updateDisplay();

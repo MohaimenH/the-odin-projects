@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Library</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 </head>
+
 <body>
-
+    <header>Personal Library</header>
     <form class="book-form">
-        <label for="book-name">Book Name</label><input name="book-name" type="text" class="book-name">
-        <label for="book-author">Book Author</label><input name="book-author" type="text" class="book-author">
-        <label for="book-pages">Pages</label><input name="book-pages" type="number" class="book-pages">
-        <label for="read">Read</label><input name="read" type="checkbox" class="read">
+        <div class="form-element-name"><label for="book-name">Book Name</label><input name="book-name" type="text" class="book-name" /></div>
+        <div class="form-element-author"><label for="book-author">Book Author</label><input name="book-author" type="text" class="book-author" /></div>
+        <div class="form-element-pages"><label for="book-pages">Pages</label><input name="book-pages" type="number" class="book-pages" /></div>
+        <div class="form-element-read"><label for="read">Read</label><input name="read" type="checkbox" class="read" /></div>
+        <button class="submit">Submit</button>
     </form>
-    <button class="submit">Submit</button>
 
-    <div class="list-wrapper">
-        <div>Name</div>
-        <div>Author</div>
-        <div>Read</div>
+    <div class="table-wrapper">
+        <div class="list-wrapper titles">
+            <div>Name</div>
+            <div>Author</div>
+            <div>Pages</div>
+        </div>
+        <ul class="book-list"></ul>
     </div>
-    <ul class="book-list">
-        
-    </ul>
-
     <script src="book.js"></script>
 </body>
+
 </html>

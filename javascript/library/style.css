@@ -1,0 +1,165 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(253, 253, 253);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 20px;
+
+    margin: 15px 0px 15px 10px;
+    padding: 20px 0px 5px 0px;
+
+    border-top: 1px solid black;
+
+    align-content: center;
+}
+
+.list-wrapper > div {
+    flex: 0 0 20%;
+    justify-self: center;
+    align-self: center;
+}
+
+.list-wrapper > button {
+    /* margin-right: 10%; */
+    margin: 0 30px 0px 30px;
+    /* width: 90px; */
+}
+
+button {
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+
+    text-align: center;
+    width: 125px;
+}   
+
+button:hover {
+    filter: brightness(110%);
+    transition: 0.2s;
+}
+
+
+.book-read {
+    background-color: rgb(35, 192, 127);
+}
+
+.book-unread {
+    background-color: rgb(170, 43, 192);
+}
+
+.titles {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 22px;
+    border-top: 0;
+
+}
+
+.deleteBtn {
+    background-color: rgb(219, 30, 30);
+}
+
+
+.table-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+    margin-left: 20%;
+}
+
+.book-form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    grid-template-areas: 
+    "name author"
+    "pages read"
+    "submit submit";
+}
+
+.form-element-name {
+    grid-area: name;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-element-author {
+    grid-area: author;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-element-pages {
+    grid-area: pages;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-element-read {
+    grid-area: read;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit {
+    background-color: rgb(30, 33, 219);
+    grid-area: submit;
+
+    margin-left: 40%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    
+}
+
+[class*="form-element-"] {
+    margin: 10px;
+    font-size: 25px;
+}
+
+input {
+    font-size: 25px;
+    text-align: center;
+}
+
+header {
+    font-size: 50px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 2%;
+
+    text-decoration:underline;
+
+}
