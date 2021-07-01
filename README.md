@@ -16,3 +16,4 @@ A list of finished projects, grouped by the course they belong to, can be found 
 ### JavaScript
 
 - Library
+- Tic Tac Toe [Ongoing]
