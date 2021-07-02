@@ -1,7 +1,7 @@
 // GameBoard Module
 
 const gameBoard = (() => {
-    let gameBoard = ["X", "X", "X", "X", "X", "O", "O", "O", "X"];
+    let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
     const getGameBoard = () => {
         return gameBoard;
@@ -34,11 +34,10 @@ const player = (name, symbol) => {
 // Updates Display
 const displayUpdator = () => {
 
-    let btns = document.querySelectorAll(".btns");
+    let playingGrid = document.querySelectorAll(".playingGrid");
 
     for (let i = 0; i < gameBoard.getGameBoard().length; i++) {
-        btns[i].textContent = gameBoard.getGameBoard()[i];
+        playingGrid[i].textContent = gameBoard.getGameBoard()[i];
     }
 
 };
-
