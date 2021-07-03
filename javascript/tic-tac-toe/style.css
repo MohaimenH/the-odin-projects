@@ -50,8 +50,11 @@ body {
 }
 
 .reset-btn {
-    margin: 80px;
     font-size: 30px;
     padding: 10px;
+}
 
+.winner-text {
+    font-size: 40px;
+    margin: 30px;
 }

@@ -45,12 +45,22 @@ const gridUpdator = (() => {
     
     const resetDisplay = () => {
         for (let i = 0; i < 9; i++) {
+            playingGrid[i].disabled = false;
             playingGrid[i].textContent = "";
             playingGrid[i].classList.remove("filledButton");
+
+            const winnerText = document.querySelector(".winner-text");
+            winnerText.textContent = `Press A Square To Start!`;
          }
     }
 
-    return {updateDisplay, resetDisplay};
+    const disableGrid = () => {
+        for (let i = 0; i < 9; i++) {
+            playingGrid[i].disabled = true;
+         }
+    }
+
+    return {updateDisplay, resetDisplay, disableGrid};
 })();
 
 // Game events
@@ -65,9 +75,27 @@ const gameEvents = (() => {
         if (e.target.tagName == "BUTTON" && e.target.textContent == "") {
             gameBoard.addToGameBoard(currentTurn, e.target.id);
             e.target.classList.add("filledButton");
-            currentTurn = currentTurn == "X" ? "O" : "X";
 
             gridUpdator.updateDisplay();
+
+            winnerStatus = winChecker();
+
+            const winnerText = document.querySelector(".winner-text");
+
+            if (winnerStatus[0] == "draw") {
+                winnerText.textContent = `Draw!`;
+                gridUpdator.disableGrid();
+            }
+            else if (winnerStatus[0]) {
+                winnerText.textContent = `${currentTurn} Wins!`;
+                gridUpdator.disableGrid();
+            }
+            else {
+                currentTurn = currentTurn == "X" ? "O" : "X";
+                winnerText.textContent = `${currentTurn}'s Turn`;
+            }
+
+            
         }
     });
 
@@ -77,10 +105,53 @@ const gameEvents = (() => {
         gameBoard.resetGameBoard();
         gridUpdator.resetDisplay();
     })
-    
+
     const setCurrentTurn = (symbol) => {
         currentTurn = symbol;
     }
     return {setCurrentTurn};
 })();
 
+const winChecker = () => {
+    let board = gameBoard.getGameBoard();
+
+    if (board[0] == board[1] && board[1] == board[2] && board[0] != "") {
+        return [true,0,1,2];
+    }
+
+    if (board[3] == board[4] && board[4] == board[5] && board[3] != "") {
+        return [true,3,4,5];
+    }
+
+    if (board[6] == board[7] && board[7] == board[8] && board[6] != "") {
+        return [true,6,7,8];
+    }
+
+    if (board[0] == board[3] && board[3] == board[6] && board[0] != "") {
+        return [true,0,3,6];
+    }
+
+    if (board[1] == board[4] && board[4] == board[7] && board[1] != "") {
+        return [true,1,4,7];
+    }
+
+    if (board[2] == board[5] && board[5] == board[8] && board[2] != "") {
+        return [true,2,5,8];
+    }
+
+    if (board[0] == board[4] && board[4] == board[8] && board[0] != "") {
+        return [true,0,4,8];
+    }
+
+    if (board[2] == board[4] && board[4] == board[6] && board[2] != "") {
+        return [true,2,4,6];
+    }
+
+    for (let i=0; i < 9; i++) {
+        if (board[i] == "") {
+            return [false];
+        }
+    }
+
+    return ["draw"];
+};
