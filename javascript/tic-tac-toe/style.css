@@ -2,29 +2,53 @@
 *::after,
 *::before {
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
+body {
+    display: flex;
+
+    flex-flow: column nowrap;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(240, 240, 240);
+}
 
 .main-title {
-
+    font-size: 8em;
+    text-align: center;
 }
 
-.wrapper {
+.btn-wrapper {
     display: grid;
-    width: 75%;
-    grid-template-columns: repeat(3, 10%);
+    min-width: 200px;
+    width: 20%;
+    grid-template-columns: repeat(3, 1fr);
+
+    padding: 2px;
+    border-radius: 8px;
+    background-color: black;
 }
 
-.wrapper > button {
+.btn-wrapper > button {
     border: none;
     height: 80px;
     margin: 2px;
     border-radius: 5px;
+    color: white;
+    font-size: 60px;
 
+    background-color: rgb(92, 161, 207);
 }
 
 button:hover {
-    background-color: red;
+    background-color: rgb(10, 84, 133);
+    transition: 0.3s;
+}
 
+.filledButton:hover {
+    background-color: rgb(221, 0, 0);
     transition: 0.3s;
 }

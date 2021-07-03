@@ -9,10 +9,13 @@ const gameBoard = (() => {
 
     const addToGameBoard = (symbol, index) => {
         gameBoard.splice(index, 1, symbol);
-        console.log(gameBoard);
     };
 
-    return { getGameBoard, addToGameBoard };
+    const resetGameBoard = () => {
+        gameBoard = ["", "", "", "", "", "", "", "", ""];
+    };
+
+    return { getGameBoard, addToGameBoard, resetGameBoard };
 })();
 
 // Player Factory
@@ -31,13 +34,30 @@ const player = (name, symbol) => {
     return { getName, getSymbol };
 };
 
-// Updates Display
-const displayUpdator = () => {
-
+// Updates Grid
+const gridUpdator = () => {
     let playingGrid = document.querySelectorAll(".playingGrid");
 
     for (let i = 0; i < gameBoard.getGameBoard().length; i++) {
         playingGrid[i].textContent = gameBoard.getGameBoard()[i];
     }
-
 };
+
+// Game module
+const gameLogic = (() => {
+    gridUpdator();
+
+    let currentTurn = "X";
+
+    const btnWrapper = document.querySelector(".btn-wrapper");
+
+    btnWrapper.addEventListener("click", (e) => {
+        if (e.target.tagName == "BUTTON" && e.target.textContent == "") {
+            gameBoard.addToGameBoard(currentTurn, e.target.id);
+            e.target.classList.add("filledButton");
+            currentTurn = currentTurn == "X" ? "O" : "X";
+
+            gridUpdator();
+        }
+    });
+})();
