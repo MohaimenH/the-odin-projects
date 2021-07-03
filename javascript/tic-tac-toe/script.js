@@ -47,8 +47,7 @@ const gridUpdator = (() => {
         for (let i = 0; i < 9; i++) {
             playingGrid[i].disabled = false;
             playingGrid[i].textContent = "";
-            playingGrid[i].classList.remove("filledButton");
-            playingGrid[i].classList.remove("winning-combo");
+            playingGrid[i].classList.remove("filledButton", "winning-combo", "disabled-grid");
 
             const winnerText = document.querySelector(".winner-text");
             winnerText.textContent = `Press A Square To Start!`;
@@ -58,7 +57,7 @@ const gridUpdator = (() => {
     const disableGrid = () => {
         for (let i = 0; i < 9; i++) {
             playingGrid[i].disabled = true;
-            playingGrid[i].classList.remove("filledButton");
+            playingGrid[i].classList.add("disabled-grid");
          }
     }
 

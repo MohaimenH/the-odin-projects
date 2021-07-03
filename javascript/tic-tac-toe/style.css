@@ -21,6 +21,7 @@ body {
 .btn-wrapper {
     display: grid;
     min-width: 200px;
+    min-width: 300px;
     width: 20%;
     grid-template-columns: repeat(3, 1fr);
     padding: 2px;
@@ -57,6 +58,10 @@ body {
 .winner-text {
     font-size: 40px;
     margin: 30px;
+}
+
+.disabled-grid:hover {
+    background-color: rgb(92, 161, 207);
 }
 
 .winning-combo {

@@ -16,4 +16,4 @@ A list of finished projects, grouped by the course they belong to, can be found 
 ### JavaScript
 
 - Library
-- Tic Tac Toe
+- [Tic Tac Toe](javascript/tic-tac-toe/index.html)
