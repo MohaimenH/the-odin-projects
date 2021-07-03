@@ -8,12 +8,12 @@ A list of finished projects, grouped by the course they belong to, can be found 
 
 ### Foundations
 
-- Google Search page
-- Rock, Paper, Scissors
-- Etch-a-Sketch
-- Calculator
+- [Google Search page](foundations/google-homepage/index.html)
+- [Rock, Paper, Scissors](foundations/rock-paper-scissors/index.html)
+- [Etch-a-Sketch](foundations/etch-a-sketch/index.html)
+- [Calculator](foundations/calculator/index.html)
 
 ### JavaScript
 
-- Library
+- [Library](javascript/library/index.html)
 - [Tic Tac Toe](javascript/tic-tac-toe/index.html)
