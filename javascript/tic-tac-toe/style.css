@@ -53,11 +53,16 @@ body {
 .reset-btn {
     font-size: 30px;
     padding: 10px;
+    cursor: pointer;
 }
 
 .winner-text {
     font-size: 40px;
     margin: 30px;
+}
+
+.disabled-grid {
+    cursor: default;
 }
 
 .disabled-grid:hover {
