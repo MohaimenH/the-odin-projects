@@ -48,6 +48,7 @@ const gridUpdator = (() => {
             playingGrid[i].disabled = false;
             playingGrid[i].textContent = "";
             playingGrid[i].classList.remove("filledButton");
+            playingGrid[i].classList.remove("winning-combo");
 
             const winnerText = document.querySelector(".winner-text");
             winnerText.textContent = `Press A Square To Start!`;
@@ -57,10 +58,17 @@ const gridUpdator = (() => {
     const disableGrid = () => {
         for (let i = 0; i < 9; i++) {
             playingGrid[i].disabled = true;
+            playingGrid[i].classList.remove("filledButton");
          }
     }
 
-    return {updateDisplay, resetDisplay, disableGrid};
+    const winningCombo = (combo) => {
+        for (let i of combo) {
+            playingGrid[i].classList.add("winning-combo");
+        }
+    }
+
+    return {updateDisplay, resetDisplay, disableGrid, winningCombo};
 })();
 
 // Game events
@@ -88,6 +96,7 @@ const gameEvents = (() => {
             }
             else if (winnerStatus[0]) {
                 winnerText.textContent = `${currentTurn} Wins!`;
+                gridUpdator.winningCombo(winnerStatus.slice(1));
                 gridUpdator.disableGrid();
             }
             else {

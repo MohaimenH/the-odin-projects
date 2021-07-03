@@ -58,3 +58,11 @@ body {
     font-size: 40px;
     margin: 30px;
 }
+
+.winning-combo {
+    background-color: rgb(48, 200, 48);
+}
+
+.winning-combo:hover {
+    background-color: rgb(48, 200, 48);
+}
