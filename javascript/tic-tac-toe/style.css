@@ -45,6 +45,10 @@ body {
     transition: 0.3s;
 }
 
+.filledButton {
+    cursor: default;
+}
+
 .filledButton:hover {
     background-color: rgb(221, 0, 0);
     transition: 0.3s;
