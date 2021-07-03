@@ -1,5 +1,4 @@
 // GameBoard Module
-
 const gameBoard = (() => {
     let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
@@ -35,17 +34,28 @@ const player = (name, symbol) => {
 };
 
 // Updates Grid
-const gridUpdator = () => {
+const gridUpdator = (() => {
     let playingGrid = document.querySelectorAll(".playingGrid");
 
-    for (let i = 0; i < gameBoard.getGameBoard().length; i++) {
-        playingGrid[i].textContent = gameBoard.getGameBoard()[i];
+    const updateDisplay = () => {
+        for (let i = 0; i < 9; i++) {
+            playingGrid[i].textContent = gameBoard.getGameBoard()[i];
+        }
     }
-};
+    
+    const resetDisplay = () => {
+        for (let i = 0; i < 9; i++) {
+            playingGrid[i].textContent = "";
+            playingGrid[i].classList.remove("filledButton");
+         }
+    }
 
-// Game module
-const gameLogic = (() => {
-    gridUpdator();
+    return {updateDisplay, resetDisplay};
+})();
+
+// Game events
+const gameEvents = (() => {
+    gridUpdator.updateDisplay();
 
     let currentTurn = "X";
 
@@ -57,7 +67,20 @@ const gameLogic = (() => {
             e.target.classList.add("filledButton");
             currentTurn = currentTurn == "X" ? "O" : "X";
 
-            gridUpdator();
+            gridUpdator.updateDisplay();
         }
     });
+
+    const resetBtn = document.querySelector(".reset-btn");
+
+    resetBtn.addEventListener('click', (e) => {
+        gameBoard.resetGameBoard();
+        gridUpdator.resetDisplay();
+    })
+    
+    const setCurrentTurn = (symbol) => {
+        currentTurn = symbol;
+    }
+    return {setCurrentTurn};
 })();
+

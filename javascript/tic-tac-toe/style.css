@@ -7,12 +7,9 @@
 
 body {
     display: flex;
-
     flex-flow: column nowrap;
-
     justify-content: center;
     align-items: center;
-
     background-color: rgb(240, 240, 240);
 }
 
@@ -26,24 +23,23 @@ body {
     min-width: 200px;
     width: 20%;
     grid-template-columns: repeat(3, 1fr);
-
     padding: 2px;
     border-radius: 8px;
     background-color: black;
 }
 
-.btn-wrapper > button {
+.playingGrid {
     border: none;
-    height: 80px;
+    height: 100px;
     margin: 2px;
     border-radius: 5px;
     color: white;
-    font-size: 60px;
-
+    font-size: 65px;
     background-color: rgb(92, 161, 207);
+    cursor: pointer;
 }
 
-button:hover {
+.playingGrid:hover {
     background-color: rgb(10, 84, 133);
     transition: 0.3s;
 }
@@ -51,4 +47,11 @@ button:hover {
 .filledButton:hover {
     background-color: rgb(221, 0, 0);
     transition: 0.3s;
+}
+
+.reset-btn {
+    margin: 80px;
+    font-size: 30px;
+    padding: 10px;
+
 }
