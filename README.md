@@ -8,12 +8,12 @@ A list of finished projects, grouped by the course they belong to, can be found 
 
 ### Foundations
 
-- [Google Search page](foundations/google-homepage/index.html)
-- [Rock, Paper, Scissors](foundations/rock-paper-scissors/index.html)
-- [Etch-a-Sketch](foundations/etch-a-sketch/index.html)
-- [Calculator](foundations/calculator/index.html)
+- [Google Search page](https://mohaimenh.github.io/the-odin-projects/foundations/google-homepage/index.html)
+- [Rock, Paper, Scissors](https://mohaimenh.github.io/the-odin-projects/foundations/rock-paper-scissors/index.html)
+- [Etch-a-Sketch](https://mohaimenh.github.io/the-odin-projects/foundations/etch-a-sketch/index.html)
+- [Calculator](https://mohaimenh.github.io/the-odin-projects/foundations/calculator/index.html)
 
 ### JavaScript
 
-- [Library](javascript/library/index.html)
-- [Tic Tac Toe](javascript/tic-tac-toe/index.html)
+- [Library](https://mohaimenh.github.io/the-odin-projects/javascript/library/index.html)
+- [Tic Tac Toe](https://mohaimenh.github.io/the-odin-projects/javascript/tic-tac-toe/index.html)
