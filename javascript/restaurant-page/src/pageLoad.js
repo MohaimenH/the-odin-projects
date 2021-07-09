@@ -1,4 +1,5 @@
 const constantDisplay = (root) => {
+    
     const header = document.createElement('header');
     header.classList.add("title-header");
     header.textContent = "Fire Fries";

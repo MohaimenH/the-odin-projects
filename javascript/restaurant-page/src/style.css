@@ -14,8 +14,8 @@
 
 html {
     min-height: 100%;
-    background-color: grey;
-    background-image: url("./background.jpg");
+    background-color: rgb(37, 37, 37);
+    /* background-image: url("./background.jpg"); */
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -30,6 +30,7 @@ body {
 .content {
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
 }
 
 .title-header {
@@ -38,32 +39,33 @@ body {
     background-color: black;
     color: white;
     font-family: Fuggles;
-    font-size: 20vh;
+    font-size: 180px;
     text-align: center;
-
+    min-height: 80px;
     font-weight: 400;
 }
 
 .nav-bar {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgb(53, 53, 53);
+    width: 100%;
 }
 
 .nav-list {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
-    height: 6vh;
+    height: 2vh;
 
     align-items: center;
 }
 
 .nav-list > li {
     list-style-type: none; /* Remove bullets */
-    padding: 2vh; /* Remove padding */
+    padding: 1vh; /* Remove padding */
     margin: 0; /* Remove margins */
 
     color: white;
-    font-size: 4vh;
+    font-size: 25px;
 
     font-family: Poiret;
 
@@ -77,4 +79,33 @@ body {
     transition: 0.8s;
     border: 1px solid white;
     cursor: pointer;
+}
+
+.outerDiv {
+    display: flex;
+    flex-flow: row nowrap;
+    text-align: justify;
+    background-color: rgb(53, 53, 53);
+    width: 60%;
+
+    font-size: 30px;
+    margin: 5%;
+}
+
+.outerDiv > p {
+    margin: 5% 10%;
+    color: white;
+    font-family: Poiret;
+}
+
+@media (max-width: 992px) {
+    .outerDiv {
+        margin: 5% 3%;
+        width: 95%;
+        text-align: center;
+    }
+
+    .outerDiv > p {
+        margin: 3% 5%;
+    }
 }

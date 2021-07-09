@@ -7,6 +7,7 @@ import contactPage from './contactPage';
 const root = document.querySelector(".content");
 
 constantDisplay(root);
+homePage(root);
 
 const eventListeners = (() => {
     const navList = document.querySelector(".nav-list");
@@ -23,15 +24,15 @@ const switchDisplay = (target) => {
     root.removeChild(root.lastChild);
 
     if (target === 'home') {
-        root.appendChild();
+        homePage(root);
     }
 
     else if (target === 'menu') {
-        root.appendChild();
+        menuPage(root);
     }
 
     else if (target === 'contact') {
-        root.appendChild();
+        contactPage(root);
     }
 
     else {
