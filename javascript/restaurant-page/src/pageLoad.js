@@ -15,18 +15,14 @@ const constantDisplay = (root) => {
     for (let item of menuItems) {
         let child = document.createElement('li');
         child.textContent = item;
+        child.classList.add(`menu-${item.toLowerCase()}`);
         navList.appendChild(child);
     }
 
     navBar.appendChild(navList);
     root.appendChild(navBar);
 
-    const updateDisplay = (type) => {
-        
-    }
-    
-    return {updateDisplay};
-
+    root.appendChild(document.createElement('div'));
 };
 
 export {constantDisplay};
