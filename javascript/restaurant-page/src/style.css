@@ -1,0 +1,80 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Fuggles';
+    src: url('./Fuggles-Regular.ttf') format('woff2');
+}
+
+@font-face {
+    font-family: 'Poiret';
+    src: url('./PoiretOne-Regular.ttf') format('woff2');
+}
+
+html {
+    min-height: 100%;
+    background-color: grey;
+    background-image: url("./background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body {    
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.content {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.title-header {
+    width: 100%;
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: Fuggles;
+    font-size: 20vh;
+    text-align: center;
+
+    font-weight: 400;
+}
+
+.nav-bar {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-list {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    height: 6vh;
+
+    align-items: center;
+}
+
+.nav-list > li {
+    list-style-type: none; /* Remove bullets */
+    padding: 2vh; /* Remove padding */
+    margin: 0; /* Remove margins */
+
+    color: white;
+    font-size: 4vh;
+
+    font-family: Poiret;
+
+    font-weight: 400;
+
+    border: 0px solid rgba(255, 255, 255, 0.2);
+
+  }
+
+.nav-list > li:hover {
+    transition: 0.8s;
+    border: 1px solid white;
+    cursor: pointer;
+}
