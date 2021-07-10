@@ -43,6 +43,8 @@ body {
     text-align: center;
     min-height: 80px;
     font-weight: 400;
+
+    cursor:default;
 }
 
 .nav-bar {
@@ -101,6 +103,65 @@ body {
     font-family: Poiret;
 }
 
+.menu-underline {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.menu-page-div {
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 2%;
+    padding-bottom: 5%;
+}
+
+.menu-type-heading {
+    padding: 0;
+    margin: 0;
+
+    font-family: Poiret;
+    font-size: 50px;
+
+    text-decoration: underline;
+    color: rgb(195, 195, 195);
+}
+
+.holder-div-menu {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin-top: 2%;
+}
+
+.menu-item-card {
+    border: 2px solid rgb(110, 110, 110);
+    border-radius: 15px;
+    flex: 0 0 40%;
+    color: rgb(211, 211, 211);
+    font-family: Poiret;
+
+    margin: 20px;
+}
+
+.menu-item-card > div:first-child {
+    text-align: center;
+    font-size: 45px;
+    border-bottom: 0.5px solid rgb(116, 116, 116);
+}
+
+.menu-item-card > div:nth-child(2) {
+    text-align: center;
+    margin: 1%;
+    font-size: 25px;
+}
+
+.menu-item-card > div:nth-child(3) {
+    text-align: right;
+    font-size: 25px;
+}
+
 @media (max-width: 992px) {
     .outerDiv {
         margin: 5% 3%;
@@ -110,5 +171,11 @@ body {
 
     .outerDiv > p {
         margin: 3% 5%;
+    }
+}
+
+@media (max-width: 700px) {
+    .title-header {
+        font-size: 140px;
     }
 }
