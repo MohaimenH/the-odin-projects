@@ -9,7 +9,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Document",
+            title: "Dominoes - TODO App",
         }),
     ],
     output: {
