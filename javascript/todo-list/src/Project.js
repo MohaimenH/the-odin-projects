@@ -1,9 +1,21 @@
 export default class Project {
-    constructor(name, description) {
+    constructor(id, name, description) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.incomplete = [];
         this.complete = [];
+    }
+
+    addTODO(TODO) {
+        this.incomplete = this.incomplete.concat(TODO);
+    }
+
+    removeTODO(TODO) {
+        this.complete = this.complete.filter((item) => item.name !== TODO.name);
+        this.incomplete = this.incomplete.filter(
+            (item) => item.name !== TODO.name
+        );
     }
 
     taskToggle(TODO) {
