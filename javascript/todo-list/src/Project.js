@@ -8,15 +8,16 @@ export default class Project {
 
     taskToggle(TODO) {
         if (TODO.status) {
-            this.complete = this.complete.concat(TODO);
-            this.incomplete = this.incomplete.filter(
-                (item) => item.name !== TODO.name
-            );
-        } else {
             this.incomplete = this.incomplete.concat(TODO);
             this.complete = this.complete.filter(
                 (item) => item.name !== TODO.name
             );
+        } else {
+            this.complete = this.complete.concat(TODO);
+            this.incomplete = this.incomplete.filter(
+                (item) => item.name !== TODO.name
+            );
         }
+        TODO.status = !TODO.status;
     }
 }
