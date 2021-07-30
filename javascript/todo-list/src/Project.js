@@ -5,10 +5,12 @@ export default class Project {
         this.description = description;
         this.incomplete = [];
         this.complete = [];
+        this.tasksID = 0;
     }
 
     addTODO(TODO) {
         this.incomplete = this.incomplete.concat(TODO);
+        tasksID++;
     }
 
     removeTODO(TODO) {
