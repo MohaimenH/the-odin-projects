@@ -10,6 +10,10 @@ export default class Project {
     addTODO(TODO) {
         this.incomplete.push(TODO);
         this.tasksID++;
+
+        this.incomplete.sort((a, b) => {
+            return b.priority - a.priority;
+        });
     }
 
     removeTODO(name) {

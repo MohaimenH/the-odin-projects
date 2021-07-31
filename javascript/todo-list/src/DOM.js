@@ -48,7 +48,6 @@ const renderProjects = () => {
             "darken-selected",
             "project-item"
         );
-
         listItem.appendChild(outerDiv);
 
         let heading = document.createElement("h4");
@@ -74,6 +73,7 @@ const renderTasks = () => {
     for (let x of proj.incomplete) {
         let taskName = x.title;
         let taskDesc = x.description;
+        let taskTime = x.dueDate;
 
         let listItem = document.createElement("li");
         listItem.classList.add("card");
@@ -101,7 +101,7 @@ const renderTasks = () => {
         outerDiv.appendChild(heading);
 
         let subtitle = document.createElement("h5");
-        subtitle.textContent = taskDesc;
+        subtitle.textContent = `${taskDesc}, by ${taskTime}`;
         subtitle.classList.add("card-subtitle", "text-light");
         outerDiv.appendChild(subtitle);
     }
@@ -109,6 +109,7 @@ const renderTasks = () => {
     for (let x of proj.complete) {
         let taskName = x.title;
         let taskDesc = x.description;
+        let taskTime = x.dueDate;
 
         let listItem = document.createElement("li");
         listItem.classList.add("card");
@@ -130,7 +131,7 @@ const renderTasks = () => {
         outerDiv.appendChild(heading);
 
         let subtitle = document.createElement("h5");
-        subtitle.textContent = taskDesc;
+        subtitle.textContent = `${taskDesc} by ${taskTime}`;
         subtitle.classList.add("card-subtitle", "text-light");
         outerDiv.appendChild(subtitle);
     }
@@ -146,8 +147,12 @@ const addTODO = (title, description, dueDate, priority) => {
 addTODO("Gym", "Workout", "12PM", 10);
 addTODO("Study", "Math", "2PM", 6);
 addTODO("Code", "JavaScript", "3PM", 2);
+appLogic.projects
+    .find((item) => item.name === "Default")
+    .complete.push(new TODO("Grocery", "Freshco", "10AM", 10));
 
 appLogic.newProject("School", "York University");
+addTODO("Sleep", "Duh?", "10PM", 3);
 
 appLogic.projects
     .find((item) => item.name === "School")

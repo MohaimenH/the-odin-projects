@@ -5,11 +5,21 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Domino - TODO App</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+            rel="stylesheet"
+        />
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
     <script defer src="TODO.bundle.js"></script><script defer src="Project.bundle.js"></script><script defer src="appModule.bundle.js"></script><script defer src="DOM.bundle.js"></script><link href="DOM.css" rel="stylesheet"></head>
     <body>
@@ -32,8 +42,8 @@
             <section class="todos-section">
                 <h2 class="todos-heading">Tasks</h2>
                 <h3 class="incomplete-task">To Do</h3>
-                <ul class="incomplete-list">
-                    <li class="card">
+                <ul class="incomplete-list animate__animated animate__fadeIn">
+                    <!-- <li class="card">
                         <div class="card-body text-white bg-danger rounded">
                             <h4 class="card-title text-white">Run</h4>
                             <h5 class="card-subtitle">Go to run</h5>
@@ -52,7 +62,7 @@
                             <h4 class="card-title text-white">Run</h4>
                             <h5 class="card-subtitle">Go to run</h5>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
 
                 <h3 class="complete-task">Completed</h3>
