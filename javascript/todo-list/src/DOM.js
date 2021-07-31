@@ -14,10 +14,11 @@
 */
 
 import "./DOM.css";
-import appLogic from "./appLogic";
+import appModule from "./appModule";
+import TODO from "./TODO";
 
 // Helpers
-
+const appLogic = appModule();
 let selectedProject = "Default";
 
 function removeAllChildNodes(parent) {
@@ -30,8 +31,6 @@ const projectsList = document.querySelector(".projects-list");
 
 const renderProjects = () => {
     removeAllChildNodes(projectsList);
-    console.log(selectedProject);
-
     for (let x of appLogic.projects) {
         let projectName = x.name;
         let projectDesc = x.description;
@@ -64,24 +63,105 @@ const renderProjects = () => {
     }
 };
 
+const incompleteList = document.querySelector(".incomplete-list");
+const completeList = document.querySelector(".complete-list");
+
+const renderTasks = () => {
+    removeAllChildNodes(incompleteList);
+    removeAllChildNodes(completeList);
+
+    let proj = appLogic.projects.find((item) => item.name === selectedProject);
+    for (let x of proj.incomplete) {
+        let taskName = x.title;
+        let taskDesc = x.description;
+
+        let listItem = document.createElement("li");
+        listItem.classList.add("card");
+        incompleteList.appendChild(listItem);
+
+        let outerDiv = document.createElement("div");
+        outerDiv.classList.add(
+            "card-body",
+            "text-white",
+            `${
+                x.priority > 7
+                    ? "bg-danger"
+                    : x.priority > 3
+                    ? "bg-warning"
+                    : "bg-success"
+            }`,
+            "rounded"
+        );
+
+        listItem.appendChild(outerDiv);
+
+        let heading = document.createElement("h4");
+        heading.textContent = taskName;
+        heading.classList.add("card-title", "text-white");
+        outerDiv.appendChild(heading);
+
+        let subtitle = document.createElement("h5");
+        subtitle.textContent = taskDesc;
+        subtitle.classList.add("card-subtitle", "text-light");
+        outerDiv.appendChild(subtitle);
+    }
+
+    for (let x of proj.complete) {
+        let taskName = x.title;
+        let taskDesc = x.description;
+
+        let listItem = document.createElement("li");
+        listItem.classList.add("card");
+        completeList.appendChild(listItem);
+
+        let outerDiv = document.createElement("div");
+        outerDiv.classList.add(
+            "card-body",
+            "text-white",
+            "bg-secondary",
+            "rounded"
+        );
+
+        listItem.appendChild(outerDiv);
+
+        let heading = document.createElement("h4");
+        heading.textContent = taskName;
+        heading.classList.add("card-title", "text-white");
+        outerDiv.appendChild(heading);
+
+        let subtitle = document.createElement("h5");
+        subtitle.textContent = taskDesc;
+        subtitle.classList.add("card-subtitle", "text-light");
+        outerDiv.appendChild(subtitle);
+    }
+};
+
+appLogic.newProject("Default", "First Project");
+
 const addTODO = (title, description, dueDate, priority) => {
-    appLogic.newTODO(selectedProject, title, description, dueDate, priority);
+    let proj = appLogic.projects.find((item) => item.name === selectedProject);
+    appLogic.newTODO(proj, title, description, dueDate, priority);
 };
 
-const addProject = (name, description) => {
-    appLogic.newProject(name, description);
-};
+addTODO("Gym", "Workout", "12PM", 10);
+addTODO("Study", "Math", "2PM", 6);
+addTODO("Code", "JavaScript", "3PM", 2);
 
-// addTODO("Gym", "Workout", "12AM", 10);
-addProject("Default", "First Project");
-addProject("Sunday", "Funday");
-addProject("Work", "Deloitte");
+appLogic.newProject("School", "York University");
+
+appLogic.projects
+    .find((item) => item.name === "School")
+    .complete.push(new TODO("Gym", "Workout", "12AM", 10));
+
+appLogic.newProject("Work", "Deloitte");
 renderProjects();
+renderTasks();
 
 const eventListeners = (() => {
     projectsList.addEventListener("click", (e) => {
         if (e.target.tagName === "DIV") {
             selectedProject = e.target.firstChild.textContent;
+            renderTasks();
         }
         renderProjects();
     });

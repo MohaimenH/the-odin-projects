@@ -3,11 +3,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: "production",
+    mode: "development",
     entry: {
         TODO: "./src/TODO.js",
         Project: "./src/Project.js",
-        appLogic: "./src/appLogic.js",
+        appModule: "./src/appModule.js",
         DOM: "./src/DOM.js",
     },
     plugins: [
