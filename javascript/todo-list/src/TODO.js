@@ -11,4 +11,6 @@ export default class TODO {
     toggleStatus() {
         this.status = !this.status;
     }
+
+    createComponent() {}
 }

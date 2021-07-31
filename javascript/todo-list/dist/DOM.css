@@ -1,0 +1,74 @@
+*,
+*::before,
+::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --border-color: rgb(211, 211, 211);
+}
+
+body {
+    background-color: rgb(240, 240, 240);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.right-menu {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+
+    padding-top: 5px;
+}
+
+.right-menu > li {
+    font-size: 25px;
+    margin-right: 50px;
+    justify-self: center;
+    align-self: center;
+}
+
+.main {
+    display: grid;
+    grid-template-areas: "projects todos";
+    grid-template-columns: 1fr 4fr;
+}
+
+.project-section {
+    border-right: 2px solid var(--border-color);
+    grid-area: projects;
+    height: 90vh;
+    margin: 5px;
+}
+
+.projects-list {
+    overflow: auto;
+    height: 90vh;
+}
+
+.todos-section {
+    grid-area: todos;
+    margin: 10px;
+}
+
+.incomplete-list {
+    overflow: auto;
+    height: 45vh;
+}
+
+.complete-list {
+    overflow: auto;
+    height: 30vh;
+}
+

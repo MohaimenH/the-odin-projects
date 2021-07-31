@@ -12,3 +12,7 @@
     - Complete in bottom
     - OnClick TODO -> Show/Edit Details or Delete
 */
+
+import "./DOM.css";
+
+const main = document.querySelector(".main");
