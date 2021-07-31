@@ -12,7 +12,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Dominoes - TODO App",
+            title: "Domino - TODO App",
             template: "./src/index.html",
         }),
         new MiniCssExtractPlugin(),

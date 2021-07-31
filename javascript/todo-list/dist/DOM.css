@@ -18,6 +18,11 @@ ul {
     margin: 0;
 }
 
+h4,
+h5 {
+    pointer-events: none;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -50,25 +55,55 @@ ul {
     grid-area: projects;
     height: 90vh;
     margin: 5px;
+    padding: 0 25px 0 5px;
+}
+
+.projects-heading {
+    text-align: center;
 }
 
 .projects-list {
+    overflow-y: hidden;
     overflow: auto;
     height: 90vh;
 }
 
+.projects-list > .card {
+    margin: 12px 0;
+    cursor: pointer;
+}
+
+/* .projects-list > .card:hover {
+    transition: 0.2s;
+    transform: scale(1.03);
+} */
+
 .todos-section {
     grid-area: todos;
     margin: 10px;
+    padding: 0 10px;
+}
+
+.todos-heading {
+    text-align: center;
 }
 
 .incomplete-list {
     overflow: auto;
-    height: 45vh;
+    height: 40vh;
 }
 
 .complete-list {
     overflow: auto;
     height: 30vh;
 }
+
+.sub-head {
+    font-size: 15px;
+    /* color: rgb(63, 63, 63) !important; */
+}
+
+/* .active-project {
+    background-color: rgb(0, 141, 235) !important;
+} */
 
