@@ -28,6 +28,11 @@ h5 {
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid var(--border-color);
+    margin: 20px;
+}
+
+.header > h1 {
+    font-size: 60px;
 }
 
 .right-menu {
@@ -35,14 +40,14 @@ h5 {
     flex-flow: row nowrap;
     justify-content: flex-end;
 
-    padding-top: 5px;
+    margin-top: 20px;
+    padding: 0;
 }
 
 .right-menu > li {
     font-size: 25px;
     margin-right: 50px;
-    justify-self: center;
-    align-self: center;
+    font-size: 30px;
 }
 
 .main {
@@ -61,12 +66,16 @@ h5 {
 
 .projects-heading {
     text-align: center;
+    font-weight: bold;
+    font-size: 40px;
 }
 
 .projects-list {
     overflow-y: hidden;
     overflow: auto;
     height: 90vh;
+
+    min-width: 150px;
 }
 
 .projects-list > .card {
@@ -87,6 +96,52 @@ h5 {
 
 .todos-heading {
     text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.header-todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-todo > h3:first-child,
+.complete-task {
+    font-size: 35px;
+}
+
+.legend-container {
+    display: grid;
+    font-size: 20px;
+    grid-template-areas:
+        "priority priority priority"
+        "low med high";
+}
+
+.legend-container > div {
+    margin: 5px;
+    font-weight: bold;
+}
+
+.legend-container > div:first-child {
+    grid-area: priority;
+    text-align: center;
+}
+
+.legend-container > div:nth-child(2) {
+    grid-area: low;
+    color: green;
+}
+
+.legend-container > div:nth-child(3) {
+    grid-area: med;
+    color: rgb(187, 187, 0);
+}
+
+.legend-container > div:nth-child(4) {
+    grid-area: high;
+    color: red;
 }
 
 .incomplete-list {
