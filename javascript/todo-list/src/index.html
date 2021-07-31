@@ -23,7 +23,7 @@
         />
     </head>
     <body>
-        <header class="header">
+        <header class="header animate__animated animate__slideInDown">
             <h1>Domino</h1>
             <nav>
                 <ul class="right-menu">
@@ -34,14 +34,18 @@
         </header>
 
         <main class="main">
-            <section class="project-section">
+            <section
+                class="project-section animate__animated animate__fadeInLeft"
+            >
                 <h2 class="projects-heading">Projects</h2>
                 <ul class="projects-list"></ul>
             </section>
 
             <section class="todos-section">
-                <h2 class="todos-heading">Tasks</h2>
-                <div class="header-todo">
+                <h2 class="todos-heading animate__animated animate__zoomIn">
+                    Tasks
+                </h2>
+                <div class="header-todo animate__animated animate__zoomIn">
                     <h3 class="incomplete-task">Dominoes To Do</h3>
                     <section class="legend-container">
                         <div>Priority Order:</div>
@@ -50,7 +54,7 @@
                         <div>High</div>
                     </section>
                 </div>
-                <ul class="incomplete-list animate__animated animate__fadeIn">
+                <ul class="incomplete-list animate__animated animate__zoomIn">
                     <!-- <li class="card">
                         <div class="card-body text-white bg-danger rounded">
                             <h4 class="card-title text-white">Run</h4>
@@ -73,8 +77,12 @@
                     </li> -->
                 </ul>
 
-                <h3 class="complete-task">Fallen Dominoes</h3>
-                <ul class="complete-list"></ul>
+                <h3 class="complete-task animate__animated animate__fadeInUp">
+                    Fallen Dominoes
+                </h3>
+                <ul
+                    class="complete-list animate__animated animate__fadeInUp"
+                ></ul>
             </section>
         </main>
     </body>
