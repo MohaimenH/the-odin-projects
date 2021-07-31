@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
     mode: "development",
     entry: {
-        index: "./src/index.js",
         TODO: "./src/TODO.js",
         Project: "./src/Project.js",
         appLogic: "./src/appLogic.js",
@@ -13,6 +12,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: "Dominoes - TODO App",
+            template: "./src/index.html",
         }),
     ],
     output: {

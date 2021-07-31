@@ -24,8 +24,8 @@ const removeTODO = (TODO) => {
     selectedProject.removeTODO(TODO);
 };
 
-const setActiveProject = (project) => {
-    selectedProject = project;
+const setActiveProject = (id) => {
+    selectedProject = projects.find((project) => project.id === id);
 };
 
 export default { projects, newProject, newTODO, removeTODO, setActiveProject };
