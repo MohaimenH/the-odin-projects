@@ -2,10 +2,16 @@ import Project from "./Project";
 import TODO from "./TODO";
 
 const appModule = () => {
-    const projects = [];
+    let projects = [];
 
     const newProject = (name, description) => {
         projects.push(new Project(name, description));
+    };
+
+    const removeProject = (pname) => {
+        // console.log(projects);
+        projects = projects.filter((p) => p.name !== pname);
+        // console.log(projects);
     };
 
     const newTODO = (proj, title, description, dueDate, priority) => {
@@ -18,6 +24,7 @@ const appModule = () => {
 
     return {
         projects,
+        removeProject,
         newProject,
         newTODO,
         deleteTODO,

@@ -24,6 +24,10 @@ h5 {
     pointer-events: none;
 }
 
+h5 > button {
+    pointer-events: all;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -81,6 +85,15 @@ h5 {
 .projects-list > .card {
     margin: 12px 0;
     cursor: pointer;
+}
+
+.project-delete-btn {
+    float: right;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* .projects-list > .card:hover {

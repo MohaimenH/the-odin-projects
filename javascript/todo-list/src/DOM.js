@@ -30,6 +30,7 @@ function removeAllChildNodes(parent) {
 const projectsList = document.querySelector(".projects-list");
 
 const renderProjects = () => {
+    console.log("Rendering");
     removeAllChildNodes(projectsList);
     for (let x of appLogic.projects) {
         let projectName = x.name;
@@ -59,6 +60,23 @@ const renderProjects = () => {
         subtitle.textContent = projectDesc;
         subtitle.classList.add("card-subtitle", "text-light", "sub-head");
         outerDiv.appendChild(subtitle);
+
+        if (projectName.toLowerCase() != "default") {
+            let delButton = document.createElement("button");
+            delButton.textContent = "X";
+            delButton.classList.add("project-delete-btn");
+
+            delButton.addEventListener("click", (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                appLogic.projects = appLogic.projects.filter(
+                    (p) => p.name !== projectName
+                );
+                renderProjects();
+            });
+
+            subtitle.appendChild(delButton);
+        }
     }
 };
 
@@ -66,6 +84,7 @@ const incompleteList = document.querySelector(".incomplete-list");
 const completeList = document.querySelector(".complete-list");
 
 const renderTasks = () => {
+    console.log("Tasks rendering..");
     removeAllChildNodes(incompleteList);
     removeAllChildNodes(completeList);
 
