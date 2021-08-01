@@ -123,6 +123,36 @@ const renderTasks = () => {
         subtitle.textContent = `${taskDesc}, by ${taskTime}`;
         subtitle.classList.add("card-subtitle", "text-light");
         outerDiv.appendChild(subtitle);
+
+        let delButton = document.createElement("button");
+        delButton.textContent = "X";
+        delButton.classList.add("todo-delete-btn");
+
+        delButton.addEventListener("click", (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            proj.incomplete = proj.incomplete.filter(
+                (t) => t.title !== taskName
+            );
+            renderTasks();
+        });
+        subtitle.appendChild(delButton);
+
+        let tickButton = document.createElement("button");
+        tickButton.textContent = "✓";
+        tickButton.classList.add("todo-tick-btn");
+        let checkmark = document.createElement("i");
+        checkmark.classList.add("bi", "bi-check");
+        tickButton.appendChild(checkmark);
+
+        tickButton.addEventListener("click", (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            proj.taskToggle(taskName);
+            renderTasks();
+        });
+
+        subtitle.appendChild(tickButton);
     }
 
     for (let x of proj.complete) {

@@ -26,14 +26,14 @@ export default class Project {
             this.incomplete.find((i) => i.title === name) ||
             this.complete.find((i) => i.title === name);
         if (task.status) {
-            this.incomplete = this.incomplete.concat(TODO);
+            this.incomplete = this.incomplete.concat(task);
             this.complete = this.complete.filter(
-                (item) => item.name !== task.title
+                (item) => item.title !== task.title
             );
         } else {
-            this.complete = this.complete.concat(TODO);
+            this.complete = this.complete.concat(task);
             this.incomplete = this.incomplete.filter(
-                (item) => item.name !== task.title
+                (item) => item.title !== task.title
             );
         }
         task.status = !task.status;
