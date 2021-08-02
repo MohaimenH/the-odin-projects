@@ -190,13 +190,12 @@ const renderTasks = () => {
     }
 };
 
-// appLogic.newProject("Default", "First Project");
-
 const addTODO = (title, description, dueDate, priority) => {
     let proj = appLogic.projects.find((item) => item.name === selectedProject);
     appLogic.newTODO(proj, title, description, dueDate, priority);
 };
 
+// appLogic.newProject("Default", "First Project");
 // addTODO("Gym", "Workout", "12PM", 10);
 // addTODO("Study", "Math", "2PM", 6);
 // addTODO("Code", "JavaScript", "3PM", 2);
@@ -238,3 +237,5 @@ const eventListeners = (() => {
         renderProjects();
     });
 })();
+
+localStorage.clear();
