@@ -186,28 +186,28 @@ const renderTasks = () => {
     }
 };
 
-appLogic.newProject("Default", "First Project");
+// appLogic.newProject("Default", "First Project");
 
 const addTODO = (title, description, dueDate, priority) => {
     let proj = appLogic.projects.find((item) => item.name === selectedProject);
     appLogic.newTODO(proj, title, description, dueDate, priority);
 };
 
-addTODO("Gym", "Workout", "12PM", 10);
-addTODO("Study", "Math", "2PM", 6);
-addTODO("Code", "JavaScript", "3PM", 2);
-appLogic.projects
-    .find((item) => item.name === "Default")
-    .complete.push(new TODO("Grocery", "Freshco", "10AM", 10));
+// addTODO("Gym", "Workout", "12PM", 10);
+// addTODO("Study", "Math", "2PM", 6);
+// addTODO("Code", "JavaScript", "3PM", 2);
+// appLogic.projects
+//     .find((item) => item.name === "Default")
+//     .complete.push(new TODO("Grocery", "Freshco", "10AM", 10));
 
-appLogic.newProject("School", "York University");
-addTODO("Sleep", "Duh?", "10PM", 3);
+// appLogic.newProject("School", "York University");
+// addTODO("Sleep", "Duh?", "10PM", 3);
 
-appLogic.projects
-    .find((item) => item.name === "School")
-    .complete.push(new TODO("Gym", "Workout", "12AM", 10));
+// appLogic.projects
+//     .find((item) => item.name === "School")
+//     .complete.push(new TODO("Gym", "Workout", "12AM", 10));
 
-appLogic.newProject("Work", "Deloitte");
+// appLogic.newProject("Work", "Deloitte");
 renderProjects();
 renderTasks();
 
@@ -222,10 +222,15 @@ const eventListeners = (() => {
 
     document.querySelector(".add-project").addEventListener("click", (e) => {
         e.preventDefault();
-        appLogic.newProject(
-            document.querySelector("#new-project").value,
-            document.querySelector("#new-project-desc").value
-        );
+
+        if (
+            !!document.querySelector("#new-project").value &&
+            !!document.querySelector("#new-project-desc").value
+        )
+            appLogic.newProject(
+                document.querySelector("#new-project").value,
+                document.querySelector("#new-project-desc").value
+            );
         renderProjects();
     });
 })();
