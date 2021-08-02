@@ -72,6 +72,10 @@ const renderProjects = () => {
                 appLogic.projects = appLogic.projects.filter(
                     (p) => p.name !== projectName
                 );
+                localStorage.setItem(
+                    "projects",
+                    JSON.stringify(appLogic.projects)
+                );
                 renderProjects();
             });
 

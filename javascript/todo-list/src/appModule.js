@@ -16,6 +16,7 @@ const appModule = () => {
     console.log(localStorage.getItem("projects"));
 
     const updateLocalStorage = () => {
+        console.log(projects);
         localStorage.setItem("projects", JSON.stringify(projects));
     };
 
@@ -26,21 +27,21 @@ const appModule = () => {
 
     const removeProject = (pname) => {
         projects = projects.filter((p) => p.name !== pname);
-        // updateLocalStorage();
     };
 
     const newTODO = (proj, title, description, dueDate, priority) => {
         proj.addTODO(new TODO(title, description, dueDate, priority));
-        // updateLocalStorage();
+        updateLocalStorage();
     };
 
     const deleteTODO = (project, name) => {
         project.removeTODO(name);
-        // updateLocalStorage();
+        updateLocalStorage();
     };
 
     return {
         projects,
+        updateLocalStorage,
         removeProject,
         newProject,
         newTODO,
