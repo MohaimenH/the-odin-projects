@@ -12,11 +12,25 @@ const appModule = () => {
         },
     ];
     // let projects = [];
+    // let storageData = JSON.parse(localStorage.getItem("projects"));
 
-    console.log(localStorage.getItem("projects"));
+    // if (!!storageData) {
+    //     for (let i; i < storageData.length; i++) {
+    //         projects.push(
+    //             new Project(storageData[i].name, storageData[i].description)
+    //         );
+    //         for (let y of storageData[i].incomplete) {
+    //             projects[i].incomplete.push(
+    //                 new TODO(y.title, y.description, y.dueDate, y.priority)
+    //             );
+    //         }
+    //     }
+    // }
+
+    // console.log(localStorage.getItem("projects"));
 
     const updateLocalStorage = () => {
-        console.log(projects);
+        // console.log(projects);
         localStorage.setItem("projects", JSON.stringify(projects));
     };
 

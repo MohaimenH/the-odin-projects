@@ -19,7 +19,7 @@ import TODO from "./TODO";
 
 // Helpers
 const appLogic = appModule();
-let selectedProject = "Default";
+let selectedProject = localStorage.getItem("selectedProject") || "Default";
 
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
@@ -29,8 +29,27 @@ function removeAllChildNodes(parent) {
 
 const projectsList = document.querySelector(".projects-list");
 
+const taskToggle = (proj, name) => {
+    const task =
+        proj.incomplete.find((i) => i.title === name) ||
+        proj.complete.find((i) => i.title === name);
+    if (task.status) {
+        proj.incomplete = proj.incomplete.concat(task);
+        proj.complete = proj.complete.filter(
+            (item) => item.title !== task.title
+        );
+    } else {
+        proj.complete = proj.complete.concat(task);
+        proj.incomplete = proj.incomplete.filter(
+            (item) => item.title !== task.title
+        );
+    }
+    task.status = !task.status;
+    localStorage.setItem("projects", JSON.stringify(appLogic.projects));
+};
+
 const renderProjects = () => {
-    console.log("Rendering");
+    // console.log("Rendering");
     removeAllChildNodes(projectsList);
     for (let x of appLogic.projects) {
         let projectName = x.name;
@@ -88,7 +107,7 @@ const incompleteList = document.querySelector(".incomplete-list");
 const completeList = document.querySelector(".complete-list");
 
 const renderTasks = () => {
-    console.log("Tasks rendering..");
+    // console.log("Tasks rendering..");
     removeAllChildNodes(incompleteList);
     removeAllChildNodes(completeList);
 
@@ -138,6 +157,7 @@ const renderTasks = () => {
             proj.incomplete = proj.incomplete.filter(
                 (t) => t.title !== taskName
             );
+            localStorage.setItem("projects", JSON.stringify(appLogic.projects));
             renderTasks();
         });
         subtitle.appendChild(delButton);
@@ -152,7 +172,9 @@ const renderTasks = () => {
         tickButton.addEventListener("click", (e) => {
             e.stopPropagation();
             e.preventDefault();
-            proj.taskToggle(taskName);
+
+            taskToggle(proj, taskName);
+
             renderTasks();
         });
 
@@ -190,27 +212,6 @@ const renderTasks = () => {
     }
 };
 
-const addTODO = (title, description, dueDate, priority) => {
-    let proj = appLogic.projects.find((item) => item.name === selectedProject);
-    appLogic.newTODO(proj, title, description, dueDate, priority);
-};
-
-// appLogic.newProject("Default", "First Project");
-// addTODO("Gym", "Workout", "12PM", 10);
-// addTODO("Study", "Math", "2PM", 6);
-// addTODO("Code", "JavaScript", "3PM", 2);
-// appLogic.projects
-//     .find((item) => item.name === "Default")
-//     .complete.push(new TODO("Grocery", "Freshco", "10AM", 10));
-
-// appLogic.newProject("School", "York University");
-// addTODO("Sleep", "Duh?", "10PM", 3);
-
-// appLogic.projects
-//     .find((item) => item.name === "School")
-//     .complete.push(new TODO("Gym", "Workout", "12AM", 10));
-
-// appLogic.newProject("Work", "Deloitte");
 renderProjects();
 renderTasks();
 
@@ -218,6 +219,7 @@ const eventListeners = (() => {
     projectsList.addEventListener("click", (e) => {
         if (e.target.tagName === "DIV") {
             selectedProject = e.target.firstChild.textContent;
+            localStorage.setItem("selectedProject", selectedProject);
             renderTasks();
         }
         renderProjects();
@@ -236,6 +238,28 @@ const eventListeners = (() => {
             );
         renderProjects();
     });
+
+    document.querySelector(".add-todo").addEventListener("click", (e) => {
+        let proj = appLogic.projects.find(
+            (item) => item.name === selectedProject
+        );
+        proj.incomplete.push(
+            new TODO(
+                document.querySelector("#new-todo").value,
+                document.querySelector("#new-todo-desc").value,
+                document.querySelector("#new-todo-time").value,
+                document.querySelector("#new-todo-priority").value
+            )
+        );
+
+        proj.incomplete.sort((a, b) => {
+            return b.priority - a.priority;
+        });
+
+        localStorage.setItem("projects", JSON.stringify(appLogic.projects));
+
+        renderTasks();
+    });
 })();
 
-localStorage.clear();
+// localStorage.clear();

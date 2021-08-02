@@ -18,4 +18,4 @@ A list of finished projects, grouped by the course they belong to, can be found 
 - [Library](https://mohaimenh.github.io/the-odin-projects/javascript/library/index.html)
 - [Tic Tac Toe](https://mohaimenh.github.io/the-odin-projects/javascript/tic-tac-toe/index.html)
 - [Restaurant Page](https://mohaimenh.github.io/the-odin-projects/javascript/restaurant-page/dist/index.html)
-- [ToDo List](https://mohaimenh.github.io/the-odin-projects/javascript/todo-list/dist/index.html) (In progress)
+- [ToDo List](https://mohaimenh.github.io/the-odin-projects/javascript/todo-list/dist/index.html)

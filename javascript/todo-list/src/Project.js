@@ -4,12 +4,10 @@ export default class Project {
         this.description = description;
         this.incomplete = [];
         this.complete = [];
-        this.tasksID = 0;
     }
 
     addTODO(TODO) {
         this.incomplete.push(TODO);
-        this.tasksID++;
 
         this.incomplete.sort((a, b) => {
             return b.priority - a.priority;
