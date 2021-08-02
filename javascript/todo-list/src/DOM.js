@@ -112,103 +112,123 @@ const renderTasks = () => {
     removeAllChildNodes(completeList);
 
     let proj = appLogic.projects.find((item) => item.name === selectedProject);
-    for (let x of proj.incomplete) {
-        let taskName = x.title;
-        let taskDesc = x.description;
-        let taskTime = x.dueDate;
 
-        let listItem = document.createElement("li");
-        listItem.classList.add("card");
-        incompleteList.appendChild(listItem);
+    if (proj.incomplete.length < 1) {
+        const noItemHeader = document.createElement("div");
+        noItemHeader.textContent = "Add Your ToDos!";
+        noItemHeader.classList.add("no-task");
+        incompleteList.appendChild(noItemHeader);
+    } else {
+        removeAllChildNodes(incompleteList);
+        removeAllChildNodes(completeList);
+        for (let x of proj.incomplete) {
+            let taskName = x.title;
+            let taskDesc = x.description;
+            let taskTime = x.dueDate;
 
-        let outerDiv = document.createElement("div");
-        outerDiv.classList.add(
-            "card-body",
-            "text-white",
-            `${
-                x.priority > 7
-                    ? "bg-danger"
-                    : x.priority > 3
-                    ? "bg-warning"
-                    : "bg-success"
-            }`,
-            "rounded"
-        );
+            let listItem = document.createElement("li");
+            listItem.classList.add("card");
+            incompleteList.appendChild(listItem);
 
-        listItem.appendChild(outerDiv);
-
-        let heading = document.createElement("h4");
-        heading.textContent = taskName;
-        heading.classList.add("card-title", "text-white");
-        outerDiv.appendChild(heading);
-
-        let subtitle = document.createElement("h5");
-        subtitle.textContent = `${taskDesc}, by ${taskTime}`;
-        subtitle.classList.add("card-subtitle", "text-light");
-        outerDiv.appendChild(subtitle);
-
-        let delButton = document.createElement("button");
-        delButton.textContent = "X";
-        delButton.classList.add("todo-delete-btn");
-
-        delButton.addEventListener("click", (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            proj.incomplete = proj.incomplete.filter(
-                (t) => t.title !== taskName
+            let outerDiv = document.createElement("div");
+            outerDiv.classList.add(
+                "card-body",
+                "text-white",
+                `${
+                    x.priority > 7
+                        ? "bg-danger"
+                        : x.priority > 3
+                        ? "bg-warning"
+                        : "bg-success"
+                }`,
+                "rounded"
             );
-            localStorage.setItem("projects", JSON.stringify(appLogic.projects));
-            renderTasks();
-        });
-        subtitle.appendChild(delButton);
 
-        let tickButton = document.createElement("button");
-        tickButton.textContent = "✓";
-        tickButton.classList.add("todo-tick-btn");
-        let checkmark = document.createElement("i");
-        checkmark.classList.add("bi", "bi-check");
-        tickButton.appendChild(checkmark);
+            listItem.appendChild(outerDiv);
 
-        tickButton.addEventListener("click", (e) => {
-            e.stopPropagation();
-            e.preventDefault();
+            let heading = document.createElement("h4");
+            heading.textContent = taskName;
+            heading.classList.add("card-title", "text-white");
+            outerDiv.appendChild(heading);
 
-            taskToggle(proj, taskName);
+            let subtitle = document.createElement("h5");
+            subtitle.textContent = `${taskDesc}, by ${taskTime}`;
+            subtitle.classList.add("card-subtitle", "text-light");
+            outerDiv.appendChild(subtitle);
 
-            renderTasks();
-        });
+            let delButton = document.createElement("button");
+            delButton.textContent = "X";
+            delButton.classList.add("todo-delete-btn");
 
-        subtitle.appendChild(tickButton);
+            delButton.addEventListener("click", (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                proj.incomplete = proj.incomplete.filter(
+                    (t) => t.title !== taskName
+                );
+                localStorage.setItem(
+                    "projects",
+                    JSON.stringify(appLogic.projects)
+                );
+                renderTasks();
+            });
+            subtitle.appendChild(delButton);
+
+            let tickButton = document.createElement("button");
+            tickButton.textContent = "✓";
+            tickButton.classList.add("todo-tick-btn");
+            let checkmark = document.createElement("i");
+            checkmark.classList.add("bi", "bi-check");
+            tickButton.appendChild(checkmark);
+
+            tickButton.addEventListener("click", (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+
+                taskToggle(proj, taskName);
+
+                renderTasks();
+            });
+
+            subtitle.appendChild(tickButton);
+        }
     }
 
-    for (let x of proj.complete) {
-        let taskName = x.title;
-        let taskDesc = x.description;
-        let taskTime = x.dueDate;
+    if (proj.complete.length < 1) {
+        const noItemHeader = document.createElement("div");
+        noItemHeader.textContent = "Complete Your First ToDo!";
+        noItemHeader.classList.add("no-task");
+        completeList.appendChild(noItemHeader);
+    } else {
+        for (let x of proj.complete) {
+            let taskName = x.title;
+            let taskDesc = x.description;
+            let taskTime = x.dueDate;
 
-        let listItem = document.createElement("li");
-        listItem.classList.add("card");
-        completeList.appendChild(listItem);
+            let listItem = document.createElement("li");
+            listItem.classList.add("card");
+            completeList.appendChild(listItem);
 
-        let outerDiv = document.createElement("div");
-        outerDiv.classList.add(
-            "card-body",
-            "text-white",
-            "bg-secondary",
-            "rounded"
-        );
+            let outerDiv = document.createElement("div");
+            outerDiv.classList.add(
+                "card-body",
+                "text-white",
+                "bg-secondary",
+                "rounded"
+            );
 
-        listItem.appendChild(outerDiv);
+            listItem.appendChild(outerDiv);
 
-        let heading = document.createElement("h4");
-        heading.textContent = taskName;
-        heading.classList.add("card-title", "text-white");
-        outerDiv.appendChild(heading);
+            let heading = document.createElement("h4");
+            heading.textContent = taskName;
+            heading.classList.add("card-title", "text-white");
+            outerDiv.appendChild(heading);
 
-        let subtitle = document.createElement("h5");
-        subtitle.textContent = `${taskDesc} by ${taskTime}`;
-        subtitle.classList.add("card-subtitle", "text-light");
-        outerDiv.appendChild(subtitle);
+            let subtitle = document.createElement("h5");
+            subtitle.textContent = `${taskDesc} by ${taskTime}`;
+            subtitle.classList.add("card-subtitle", "text-light");
+            outerDiv.appendChild(subtitle);
+        }
     }
 };
 
@@ -236,6 +256,8 @@ const eventListeners = (() => {
                 document.querySelector("#new-project").value,
                 document.querySelector("#new-project-desc").value
             );
+        document.querySelector("#new-project").value = "";
+        document.querySelector("#new-project-desc").value = "";
         renderProjects();
     });
 
@@ -252,6 +274,10 @@ const eventListeners = (() => {
             )
         );
 
+        document.querySelector("#new-todo").value = "";
+        document.querySelector("#new-todo-desc").value = "";
+        document.querySelector("#new-todo-time").value = "";
+        document.querySelector("#new-todo-priority").value = "";
         proj.incomplete.sort((a, b) => {
             return b.priority - a.priority;
         });
