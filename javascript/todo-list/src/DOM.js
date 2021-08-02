@@ -219,4 +219,13 @@ const eventListeners = (() => {
         }
         renderProjects();
     });
+
+    document.querySelector(".add-project").addEventListener("click", (e) => {
+        e.preventDefault();
+        appLogic.newProject(
+            document.querySelector("#new-project").value,
+            document.querySelector("#new-project-desc").value
+        );
+        renderProjects();
+    });
 })();
