@@ -12,4 +12,18 @@ const currentWeather = async (place) => {
             place
         )}&appid=${API_KEY}`
     );
+
+    return await data.json();
 };
+
+let weatherInfo = document.querySelector(".weather-info");
+
+let placeInput = document.querySelector(".info-form");
+
+placeInput.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    weatherInfo.textContent = JSON.stringify(
+        await currentWeather(document.querySelector(".place").value)
+    );
+});
