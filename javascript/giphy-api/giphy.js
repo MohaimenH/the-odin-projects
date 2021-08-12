@@ -1,7 +1,4 @@
 const API_KEY = GIPHY_API_KEY;
-
-console.log(API_KEY);
-
 const img = document.querySelector(".image-holder");
 
 const searchGIF = async (search) => {
@@ -19,3 +16,8 @@ const searchGIF = async (search) => {
 };
 
 searchGIF("cats");
+
+document.querySelector(".refresh-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    searchGIF("cats");
+});
