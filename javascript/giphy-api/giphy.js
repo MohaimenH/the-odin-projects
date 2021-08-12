@@ -1,4 +1,7 @@
-const API_KEY = "fKurH5W7bC9CJGOsbscyp4isRLB9aE1q";
+const API_KEY = GIPHY_API_KEY;
+
+console.log(API_KEY);
+
 const img = document.querySelector(".image-holder");
 
 const searchGIF = async (search) => {
@@ -12,7 +15,7 @@ const searchGIF = async (search) => {
 
     // fetchPromise.json().then((data) => {
     //     img.src = data.data.images.original.url;
-    // });
+    // }); // using `then`
 };
 
 searchGIF("cats");
