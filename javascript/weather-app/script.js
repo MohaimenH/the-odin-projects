@@ -15,7 +15,7 @@ const currentWeather = async (place) => {
         const data = await fetch(
             `http://api.openweathermap.org/data/2.5/weather?q=${String(
                 place
-            )}&appid=${API_KEY}`
+            )}&appid=${API_KEY}&units=metric`
         );
 
         return await data.json();
@@ -26,6 +26,7 @@ const currentWeather = async (place) => {
 
 const placeInput = document.querySelector(".info-form");
 const mainHeader = document.querySelector(".main-header");
+const weatherImage = document.querySelector(".weather-image");
 
 placeInput.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -46,6 +47,7 @@ placeInput.addEventListener("submit", async (e) => {
     // }
 
     // weatherInfo.textContent = JSON.stringify(weatherData);
+    // weatherImage.src = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
 
     weatherInfo.textContent = "Loaded.";
 
