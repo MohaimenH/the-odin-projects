@@ -4,12 +4,46 @@
     box-sizing: border-box;
 }
 
-body {
-    background-image: url(bg.png);
-    /* background-position: center; */
-    background-repeat: no-repeat;
-    background-size: 100vw 100vh;
-
+html {
+    background: url(bg.png) no-repeat center center fixed;
+    background-size: cover;
     color: rgb(255, 255, 255);
     font-family: Ubuntu;
+
+    overflow: hidden;
+}
+
+.main-header {
+    text-align: center;
+}
+
+.info-form {
+    text-align: center;
+
+    margin: 50px 0;
+}
+
+.place {
+    background: transparent;
+    border: none;
+
+    color: white;
+    border-bottom: 1px solid white;
+    text-align: center;
+}
+
+.search-btn {
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+
+.weather-info {
+    display: flex;
+    flex-flow: row nowrap;
+
+    justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
 }
