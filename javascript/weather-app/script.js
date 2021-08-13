@@ -6,7 +6,10 @@ fetch("apikey.json")
         API_KEY = data.WEATHER_API_KEY;
     });
 
+const weatherInfo = document.querySelector(".weather-info");
+
 const currentWeather = async (place) => {
+    weatherInfo.textContent = "Loading...";
     const data = await fetch(
         `http://api.openweathermap.org/data/2.5/weather?q=${String(
             place
@@ -15,8 +18,6 @@ const currentWeather = async (place) => {
 
     return await data.json();
 };
-
-let weatherInfo = document.querySelector(".weather-info");
 
 let placeInput = document.querySelector(".info-form");
 
