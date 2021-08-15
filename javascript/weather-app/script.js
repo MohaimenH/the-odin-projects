@@ -7,9 +7,18 @@ fetch("apikey.json")
     });
 
 const weatherInfo = document.querySelector(".weather-info");
+const placeInput = document.querySelector(".info-form");
+const mainHeader = document.querySelector(".main-header");
+const weatherImage = document.querySelector(".weather-image");
+
+const temperature = document.querySelector(".temperature");
+const feels = document.querySelector(".feels");
 
 const currentWeather = async (place) => {
-    // weatherInfo.textContent = "Loading...";
+    // weatherImage.src = "./loading.gif";
+    weatherImage.src = "./load.svg";
+    temperature.textContent = "";
+    feels.textContent = "";
 
     const data = await fetch(
         `http://api.openweathermap.org/data/2.5/weather?q=${String(
@@ -19,13 +28,6 @@ const currentWeather = async (place) => {
 
     return await data.json();
 };
-
-const placeInput = document.querySelector(".info-form");
-const mainHeader = document.querySelector(".main-header");
-const weatherImage = document.querySelector(".weather-image");
-
-const temperature = document.querySelector(".temperature");
-const feels = document.querySelector(".feels");
 
 placeInput.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -39,6 +41,7 @@ placeInput.addEventListener("submit", async (e) => {
         weatherImage.src = "";
         temperature.textContent = String(weatherData.message);
         feels.textContent = "";
+        mainHeader.textContent = `Today's Weather`;
         return;
     }
 
