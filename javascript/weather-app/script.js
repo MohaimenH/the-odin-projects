@@ -15,7 +15,6 @@ const temperature = document.querySelector(".temperature");
 const feels = document.querySelector(".feels");
 
 const currentWeather = async (place) => {
-    // weatherImage.src = "./loading.gif";
     weatherImage.src = "./load.svg";
     temperature.textContent = "";
     feels.textContent = "";
